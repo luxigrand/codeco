@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "npm run build -w @careix/shared",
     "dev": "npm run dev --workspaces --if-present",
     "dev:api": "npm run dev -w @careix/api",
     "dev:web": "npm run dev -w @careix/web",
