@@ -11,10 +11,12 @@ export const ACTION_DELTAS: Record<
   string,
   Partial<Record<StatKey, number>>
 > = {
-  feed: { hunger: 25 },
+  feed: { hunger: 25, happiness: 5 },
   play: { happiness: 25, energy: -10 },
-  clean: { hygiene: 25 },
+  clean: { hygiene: 25, happiness: 5 },
   rest: { energy: 25, hunger: -5 },
+  pet: { happiness: 18, energy: -3 },
+  walk: { happiness: 20, energy: -18, hygiene: -8, hunger: -8 },
 };
 
 function clamp(value: number): number {

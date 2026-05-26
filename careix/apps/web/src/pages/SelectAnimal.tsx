@@ -14,7 +14,7 @@ export function SelectAnimal() {
   };
 
   return (
-    <PetScreenLayout title="Hayvanını seç">
+    <PetScreenLayout title="Hayvanını seç" brand>
       <p className="careix-hint">Bakmak istediğin hayvanı seç.</p>
       <div className="careix-species-grid" data-testid="careix-species-grid">
         {SPECIES_LIST.map((species) => (

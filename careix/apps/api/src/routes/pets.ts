@@ -73,8 +73,9 @@ router.get("/current", requireAuth, async (req: AuthRequest, res) => {
 });
 
 router.post("/actions/:action", requireAuth, async (req: AuthRequest, res) => {
-  const action = req.params.action;
-  if (!PET_ACTIONS.includes(action as (typeof PET_ACTIONS)[number])) {
+  const raw = req.params.action;
+  const action = Array.isArray(raw) ? raw[0] : raw;
+  if (!action || !PET_ACTIONS.includes(action as (typeof PET_ACTIONS)[number])) {
     res.status(400).json({ error: "Geçersiz aksiyon" });
     return;
   }

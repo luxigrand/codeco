@@ -13,6 +13,11 @@ export function AnimalCard({ species, selected, onSelect }: AnimalCardProps) {
       className={`careix-animal-card ${selected ? "careix-animal-card--selected" : ""}`}
       data-testid={`careix-species-${species.id}`}
       onClick={onSelect}
+      style={{
+        background: species.cardBg,
+        color: species.cardFg,
+        textAlign: species.align,
+      }}
     >
       <span className="careix-animal-card__emoji">{species.emoji}</span>
       <span className="careix-animal-card__label">{species.labelTr}</span>

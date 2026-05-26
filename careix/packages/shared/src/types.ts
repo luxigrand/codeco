@@ -9,7 +9,7 @@ export const PET_SPECIES = [
 
 export type PetSpecies = (typeof PET_SPECIES)[number];
 
-export const PET_ACTIONS = ["feed", "play", "clean", "rest"] as const;
+export const PET_ACTIONS = ["feed", "play", "clean", "rest", "pet", "walk"] as const;
 
 export type PetAction = (typeof PET_ACTIONS)[number];
 
@@ -25,6 +25,25 @@ export interface SpeciesInfo {
   labelTr: string;
   emoji: string;
   imageUrl?: string;
+  cardBg: string;
+  cardFg: string;
+  align: "left" | "right";
+}
+
+export interface AiChatMessage {
+  role: "user" | "assistant";
+  content: string;
+}
+
+export interface AiChatBody {
+  message: string;
+  petName: string;
+  species: PetSpecies;
+  history?: AiChatMessage[];
+}
+
+export interface AiChatResponse {
+  reply: string;
 }
 
 export interface PetDto {
