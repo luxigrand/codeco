@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Species {
+  bird
+  cat
+  dog
+  fish
+  rabbit
+  hamster
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  pet          Pet?
+}
+
+model Pet {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  species    Species
+  name       String
+  hunger     Int      @default(80)
+  happiness  Int      @default(80)
+  hygiene    Int      @default(80)
+  energy     Int      @default(80)
+  lastTickAt DateTime @default(now())
+  createdAt  DateTime @default(now())
+}
